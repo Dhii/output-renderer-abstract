@@ -7,7 +7,7 @@ use InvalidArgumentException;
 use Dhii\Util\String\StringableInterface as Stringable;
 
 /**
- * Common functionality for objects that are aware of a render.
+ * Common functionality for objects that are aware of a renderer.
  *
  * @since [*next-version*]
  */
