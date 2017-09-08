@@ -15,11 +15,11 @@ use Dhii\Output\Exception\CouldNotRenderExceptionInterface;
 abstract class AbstractBlock
 {
     /**
-     * The __toString method allows a class to decide how it will react when it is converted to a string.
+     * Converts this block to string by rendering it.
      *
      * @link http://php.net/manual/en/language.oop5.magic.php#language.oop5.magic.tostring
      *
-     * @return string
+     * @return string The rendered output of this block.
      */
     public function __toString()
     {
