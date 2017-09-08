@@ -36,7 +36,7 @@ abstract class AbstractBlock
      * @since [*next-version*]
      *
      * @throws CouldNotRenderExceptionInterface If a rendering error occurs.
-     * @throws RendererExceptionInterface If an error unrelated to rendering occurs.
+     * @throws RendererExceptionInterface       If an error unrelated to rendering occurs.
      *
      * @return string|Stringable The output.
      */
@@ -47,10 +47,10 @@ abstract class AbstractBlock
      *
      * @since [*next-version*]
      *
-     * @throws CouldNotRenderExceptionInterface If a rendering error occurs.
-     * @throws RendererExceptionInterface If an error unrelated to rendering occurs.
-     *
      * @param Exception $exception The exception that was thrown during rendering.
+     *
+     * @throws CouldNotRenderExceptionInterface If a rendering error occurs.
+     * @throws RendererExceptionInterface       If an error unrelated to rendering occurs.
      *
      * @return string|Stringable The output.
      */
