@@ -4,6 +4,8 @@ namespace Dhii\Output;
 
 use Dhii\Util\String\StringableInterface as Stringable;
 use Exception;
+use Dhii\Output\Exception\RendererExceptionInterface;
+use Dhii\Output\Exception\CouldNotRenderExceptionInterface;
 
 /**
  * Common abstract functionality for blocks.
@@ -33,6 +35,9 @@ abstract class AbstractBlock
      *
      * @since [*next-version*]
      *
+     * @throws CouldNotRenderExceptionInterface If a rendering error occurs.
+     * @throws RendererExceptionInterface If an error unrelated to rendering occurs.
+     *
      * @return string|Stringable The output.
      */
     abstract protected function _render();
@@ -41,6 +46,9 @@ abstract class AbstractBlock
      * Produces output when an exception is thrown while rendering via {@see __toString}.
      *
      * @since [*next-version*]
+     *
+     * @throws CouldNotRenderExceptionInterface If a rendering error occurs.
+     * @throws RendererExceptionInterface If an error unrelated to rendering occurs.
      *
      * @param Exception $exception The exception that was thrown during rendering.
      *
