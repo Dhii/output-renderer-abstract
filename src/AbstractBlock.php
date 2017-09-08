@@ -17,14 +17,14 @@ abstract class AbstractBlock
      *
      * @link http://php.net/manual/en/language.oop5.magic.php#language.oop5.magic.tostring
      *
-     * @return string|Stringable
+     * @return string
      */
     public function __toString()
     {
         try {
-            return $this->_render();
+            return (string) $this->_render();
         } catch (Exception $exception) {
-            return $this->_renderOnException($exception);
+            return (string) $this->_renderOnException($exception);
         }
     }
 
