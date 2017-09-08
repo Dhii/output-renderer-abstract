@@ -18,7 +18,7 @@ abstract class AbstractContextRenderer
     /**
      * Produce output based on context.
      *
-     * @since 0.1
+     * @since [*next-version*]
      *
      * @param mixed|null $context The context;
      *                            something that can provide more information on how to perform rendering.
