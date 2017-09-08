@@ -4,6 +4,7 @@ namespace Dhii\Output\UnitTest;
 
 use Exception;
 use PHPUnit_Framework_MockObject_MockObject;
+use Dhii\Util\String\StringableInterface as Stringable;
 use Xpmock\TestCase;
 
 /**
@@ -58,6 +59,24 @@ class AbstractBlockTest extends TestCase
     }
 
     /**
+     * Creates a stringable object that represents a given string.
+     *
+     * @since [*next-version*]
+     *
+     * @param string $string The string for the stringable to represents.
+     *
+     * @return Stringable The stringable.
+     */
+    public function createStringable($string = null)
+    {
+        $mock = $this->mock('Dhii\Util\String\StringableInterface')
+                ->__toString((string) $string)
+                ->new();
+
+        return $mock;
+    }
+
+    /**
      * Tests whether a valid instance of the test subject can be created.
      *
      * @since [*next-version*]
@@ -80,16 +99,19 @@ class AbstractBlockTest extends TestCase
      */
     public function testToString()
     {
+        $output = uniqid('test-output-');
         $subject = $this->getMockForAbstractClass(static::TEST_SUBJECT_CLASSNAME);
         // Expect the render method to be called once
         $subject->expects($this->once())
                 ->method('_render')
-                ->willReturn($output = 'Some testing render output');
+                ->willReturn($this->createStringable($output));
         // Mock render-on-exception method
         $subject->method('_renderOnException')
                 ->willReturn($outputException = 'Whoops. An error occurred.');
 
-        $this->assertEquals($output, $subject->__toString(), 'Expected and received output do not match');
+        $result = $subject->__toString();
+        $this->assertInternalType('string', $result, 'Stringification must result in a primitive string');
+        $this->assertEquals($output, $result, 'Expected and received output do not match');
     }
 
     /**
@@ -99,6 +121,7 @@ class AbstractBlockTest extends TestCase
      */
     public function testToStringOnException()
     {
+        $outputException = uniqid('test-output-');
         $subject = $this->getMockForAbstractClass(static::TEST_SUBJECT_CLASSNAME);
         // Expect the render method to be called once
         $subject->expects($this->once())
@@ -108,11 +131,13 @@ class AbstractBlockTest extends TestCase
         $subject->expects($this->once())
                 ->method('_renderOnException')
                 ->with($exception)
-                ->willReturn($outputException = 'Whoops. An error occurred.');
+                ->willReturn($this->createStringable($outputException));
 
+        $result = $subject->__toString();
+        $this->assertInternalType('string', $result, 'Stringification must result in a primitive string');
         $this->assertEquals(
             $outputException,
-            $subject->__toString(),
+            $result,
             'Expected and received output do not match when an exception is thrown internally.'
         );
     }
