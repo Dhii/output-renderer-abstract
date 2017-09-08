@@ -43,7 +43,7 @@ abstract class AbstractBlock
     abstract protected function _render();
 
     /**
-     * Produces output when an exception is thrown while rendering via {@see __toString}.
+     * Produces output when an exception is thrown while rendering via {@see __toString()}.
      *
      * @since [*next-version*]
      *
