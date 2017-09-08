@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Dhii\Output\FuncTest;
 
 use Dhii\Output\BlockInterface;

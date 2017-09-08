@@ -72,10 +72,10 @@ abstract class AbstractContextRenderer
      *
      * @param mixed $context The validated and normalized context.
      *
-     * @return string|Stringable The output.
-     *
      * @throws ContextRenderExceptionInterface If cannot render.
      * @throws RendererExceptionInterface      Any other problem related to the renderer.
+     *
+     * @return string|Stringable The output.
      */
     abstract protected function _renderWithContext($context);
 

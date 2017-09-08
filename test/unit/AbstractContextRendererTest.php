@@ -4,11 +4,9 @@ namespace Dhii\Output\UnitTest;
 
 use Dhii\Output\RendererInterface;
 use Dhii\Validation\Exception\ValidationFailedException;
-use Dhii\Validation\Exception\ValidationFailedExceptionInterface;
 use Exception;
 use PHPUnit_Framework_MockObject_MockObject;
 use ReflectionMethod;
-use Xpmock\MockWriter;
 use Xpmock\TestCase;
 
 /**
