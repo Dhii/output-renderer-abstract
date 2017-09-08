@@ -39,11 +39,11 @@ trait ContextRendererAwareTrait
      *
      * @since [*next-version*]
      *
-     * @param RendererInterface|null $contextRenderer The context renderer instance, or null.
+     * @param ContextRendererInterface|null $contextRenderer The context renderer instance, or null.
      */
     protected function _setContextRenderer($contextRenderer)
     {
-        if ($contextRenderer !== null && !($contextRenderer instanceof RendererInterface)) {
+        if ($contextRenderer !== null && !($contextRenderer instanceof ContextRendererInterface)) {
             throw $this->_createInvalidArgumentException(
                 $this->__('Invalid context renderer'),
                 null,
