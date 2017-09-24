@@ -17,13 +17,13 @@ trait RenderTemplateCapableTrait
     /**
      * Renders a template with context.
      *
-     * @param TemplateInterface $template The template to render.
-     * @param ContainerInterface|null  $context  The context to use for rendering.
+     * @param TemplateInterface       $template The template to render.
+     * @param ContainerInterface|null $context  The context to use for rendering.
      *
      * @since [*next-version*]
      *
      * @throws TemplateRenderExceptionInterface The template may throw this if a problem occurs.
-     * @throws RendererExceptionInterface The template may throw this if a problem specific to rendering occurs.
+     * @throws RendererExceptionInterface       The template may throw this if a problem specific to rendering occurs.
      *
      * @return string|Stringable The rendered output.
      */

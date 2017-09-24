@@ -40,11 +40,11 @@ class AbstractTemplateBlockTest extends TestCase
         $mock->method('_getContextFor')
                 ->will($this->returnValue($context));
         $mock->method('_createCouldNotRenderException')
-                ->will($this->returnCallback(function($message) use (&$me, $mock) {
+                ->will($this->returnCallback(function ($message) use (&$me, $mock) {
                     return $me->createCouldNotRenderException($message, $mock);
                 }));
         $mock->method('_createRendererException')
-                ->will($this->returnCallback(function($message) use (&$me, $mock) {
+                ->will($this->returnCallback(function ($message) use (&$me, $mock) {
                     return $me->createRendererException($message, $mock);
                 }));
         $mock->method('__')
@@ -62,8 +62,9 @@ class AbstractTemplateBlockTest extends TestCase
      *
      * @since [*next-version*]
      *
-     * @param string $className Name of the class for the mock to extend.
+     * @param string $className      Name of the class for the mock to extend.
      * @param string $interfaceNames Names of the interfaces for the mock to implement.
+     *
      * @return object The object that extends and implements the specified class and interfaces.
      */
     public function mockClassAndInterfaces($className, $interfaceNames = [])
@@ -72,7 +73,7 @@ class AbstractTemplateBlockTest extends TestCase
         $definition = vsprintf('abstract class %1$s extends %2$s implements %3$s {}', [
             $paddingClassName,
             $className,
-            implode(', ' , $interfaceNames),
+            implode(', ', $interfaceNames),
         ]);
         eval($definition);
 
@@ -156,6 +157,7 @@ class AbstractTemplateBlockTest extends TestCase
      * @since [*next-version*]
      *
      * @param string $content The content of the template.
+     *
      * @return TemplateInterface The template.
      */
     public function createTemplate($content = '')

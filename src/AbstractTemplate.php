@@ -24,7 +24,7 @@ abstract class AbstractTemplate
      *                            something that can provide more information on how to perform rendering.
      *
      * @throws TemplateRenderExceptionInterface If cannot render.
-     * @throws RendererExceptionInterface      Any other problem related to the renderer.
+     * @throws RendererExceptionInterface       Any other problem related to the renderer.
      *
      * @return string|Stringable The output.
      */
@@ -73,7 +73,7 @@ abstract class AbstractTemplate
      * @param mixed $context The validated and normalized context.
      *
      * @throws TemplateRenderExceptionInterface If cannot render.
-     * @throws RendererExceptionInterface      Any other problem related to the renderer.
+     * @throws RendererExceptionInterface       Any other problem related to the renderer.
      *
      * @return string|Stringable The output.
      */
