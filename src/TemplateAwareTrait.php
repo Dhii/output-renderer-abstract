@@ -3,56 +3,49 @@
 namespace Dhii\Output;
 
 use Exception as RootException;
-use InvalidArgumentException;
-use Dhii\Util\String\StringableInterface as Stringable;
 
 /**
- * Common functionality for objects that are aware of a context renderer.
+ * Functionality for template setting and retrieval.
  *
  * @since [*next-version*]
  */
-trait ContextRendererAwareTrait
+trait TemplateAwareTrait
 {
     /**
-     * The renderer instance.
+     * The template.
      *
      * @since [*next-version*]
      *
-     * @var ContextRendererInterface|null
+     * @var TemplateInterface|null
      */
-    protected $contextRenderer;
+    protected $template;
 
     /**
-     * Retrieves the renderer associated with this instance.
+     * Retrieves the template associated with this instance.
      *
      * @since [*next-version*]
      *
-     * @return ContextRendererInterface|null The context renderer.
+     * @return TemplateInterface|null The template.
      */
-    protected function _getContextRenderer()
+    protected function _getTemplate()
     {
-        return $this->contextRenderer;
+        return $this->template;
     }
 
     /**
-     * Sets the context renderer for this instance.
+     * Assigns the template to this instance..
      *
      * @since [*next-version*]
      *
-     * @param ContextRendererInterface|null $contextRenderer The context renderer instance, or null.
+     * @param TemplateInterface|null $template The template.
      */
-    protected function _setContextRenderer($contextRenderer)
+    protected function _setTemplate($template)
     {
-        if ($contextRenderer !== null && !($contextRenderer instanceof ContextRendererInterface)) {
-            throw $this->_createInvalidArgumentException(
-                $this->__('Invalid context renderer'),
-                null,
-                null,
-                $contextRenderer
-            );
+        if ($template !== null && !($template instanceof TemplateInterface)) {
+            throw $this->_createInvalidArgumentException($this->__('Invalid template'), null, null, $template);
         }
 
-        $this->contextRenderer = $contextRenderer;
+        $this->template = $template;
     }
 
     /**

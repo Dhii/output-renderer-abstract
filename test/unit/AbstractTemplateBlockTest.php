@@ -3,56 +3,121 @@
 namespace Dhii\Output\UnitTest;
 
 use Dhii\Output\RendererInterface;
-use Dhii\Validation\Exception\ValidationFailedException;
+use Dhii\Output\Exception\CouldNotRenderExceptionInterface;
+use Dhii\Output\Exception\RendererExceptionInterface;
 use Exception;
-use PHPUnit_Framework_MockObject_MockObject;
-use ReflectionMethod;
 use Xpmock\TestCase;
+use Dhii\Output\AbstractTemplateBlock as TestSubject;
+use Dhii\Output\TemplateInterface;
 
 /**
  * Tests {@see TestSubject}.
  *
  * @since [*next-version*]
  */
-class AbstractContextRendererTest extends TestCase
+class AbstractTemplateBlockTest extends TestCase
 {
     /**
      * The class name of the test subject.
      *
      * @since [*next-version*]
      */
-    const TEST_SUBJECT_CLASSNAME = 'Dhii\Output\AbstractContextRenderer';
+    const TEST_SUBJECT_CLASSNAME = 'Dhii\Output\AbstractTemplateBlock';
 
     /**
      * Creates a new instance of the test subject.
      *
      * @since [*next-version*]
      *
-     * @return PHPUnit_Framework_MockObject_MockObject
+     * @return TestSubject The new instance.
      */
-    public function createInstance()
+    public function createInstance($template = null, $context = null)
     {
-        $mock = $this->getMockForAbstractClass(static::TEST_SUBJECT_CLASSNAME);
+        $me = $this;
+        $mock = $this->getMock(static::TEST_SUBJECT_CLASSNAME);
+        $mock->method('_getTemplate')
+                ->will($this->returnValue($template));
+        $mock->method('_getContextFor')
+                ->will($this->returnValue($context));
+        $mock->method('_createCouldNotRenderException')
+                ->will($this->returnCallback(function($message) use (&$me, $mock) {
+                    return $me->createCouldNotRenderException($message, $mock);
+                }));
+        $mock->method('_createRendererException')
+                ->will($this->returnCallback(function($message) use (&$me, $mock) {
+                    var_dump('asdasdadasd');
+                    return $me->createRendererException($message, $mock);
+                }));
+        $mock->method('__')
+                ->will($this->returnArgument(0));
 
         return $mock;
     }
 
     /**
-     * Creates a validation failed exception for testing purposes.
+     * Creates a mock that both extends a class and implements interfaces.
+     *
+     * This is particularly useful for cases where the mock is based on an
+     * internal class, such as in the case with exceptions. Helps to avoid
+     * writing hard-coded stubs.
      *
      * @since [*next-version*]
      *
-     * @return ValidationFailedException
+     * @param string $className Name of the class for the mock to extend.
+     * @param string $interfaceNames Names of the interfaces for the mock to implement.
+     * @return object The object that extends and implements the specified class and interfaces.
      */
-    public function createValidationFailedException()
+    public function mockClassAndInterfaces($className, $interfaceNames = [])
     {
-        $mock = $this->getMock('Dhii\Validation\Exception\ValidationFailedException');
+        $paddingClassName = uniqid($className);
+        $definition = vsprintf('abstract class %1$s extends %2$s implements %3$s {}', [
+            $paddingClassName,
+            $className,
+            implode(', ' , $interfaceNames),
+        ]);
+        eval($definition);
+
+        return $this->getMockForAbstractClass($paddingClassName);
+    }
+
+    /**
+     * Creates a validation failed exception.
+     *
+     * @since [*next-version*]
+     *
+     * @return CouldNotRenderExceptionInterface The new exception
+     */
+    public function createCouldNotRenderException($message = '', $renderer = null)
+    {
+        $mock = $this->mockClassAndInterfaces('Exception', ['Dhii\Output\Exception\CouldNotRenderExceptionInterface']);
+        $mock->method('getMessage')
+                ->will($this->returnValue($message));
+        $mock->method('getRenderer')
+                ->will($this->returnValue($renderer));
 
         return $mock;
     }
 
     /**
-     * Creates a mocked context renderer exception for testing purposes.
+     * Creates a validation failed exception.
+     *
+     * @since [*next-version*]
+     *
+     * @return RendererExceptionInterface The new exception
+     */
+    public function createRendererException($message = '', $renderer = null)
+    {
+        $mock = $this->mockClassAndInterfaces('Exception', ['Dhii\Output\Exception\RendererExceptionInterface']);
+        $mock->method('getMessage')
+                ->will($this->returnValue($message));
+        $mock->method('getRenderer')
+                ->will($this->returnValue($renderer));
+
+        return $mock;
+    }
+
+    /**
+     * Creates a mocked context renderer exception.
      *
      * @since [*next-version*]
      *
@@ -64,14 +129,14 @@ class AbstractContextRendererTest extends TestCase
      *
      * @return mixed
      */
-    public function createContextRendererException(
+    public function createTemplateException(
         $message = '',
         $code = 0,
         $previous = null,
         $renderer = null,
         $context = null
     ) {
-        $mock = $this->mock('Dhii\Output\Exception\ContextRenderExceptionInterface')
+        $mock = $this->mock('Dhii\Output\Exception\TemplateRenderExceptionInterface')
                      ->getMessage($message)
                      ->getCode($code)
                      ->getPrevious($previous)
@@ -84,6 +149,23 @@ class AbstractContextRendererTest extends TestCase
                      ->__toString();
 
         return $mock->new();
+    }
+
+    /**
+     * Creates a new template.
+     *
+     * @since [*next-version*]
+     *
+     * @param string $content The content of the template.
+     * @return TemplateInterface The template.
+     */
+    public function createTemplate($content = '')
+    {
+        return $this->mock('Dhii\Output\TemplateInterface')
+                ->render(function ($context) use ($content) {
+                    return vsprintf($content, $context);
+                })
+                ->new();
     }
 
     /**
@@ -109,68 +191,12 @@ class AbstractContextRendererTest extends TestCase
      */
     public function testRender()
     {
-        $subject = $this->getMockForAbstractClass(static::TEST_SUBJECT_CLASSNAME);
-
+        $template = $this->createTemplate();
+        $subject = $this->createInstance($template);
+        $_subject = $this->reflect($subject);
         $subject->expects($this->once())
-                ->method('_renderWithContext')
-                ->willReturn($output = 'Some testing rendering output');
+                ->method('_renderTemplate');
 
-        $method = new ReflectionMethod(static::TEST_SUBJECT_CLASSNAME, '_render');
-        $method->setAccessible(true);
-        $result = $method->invoke($subject);
-
-        $this->assertEquals($output, $result, 'Expected and received output do not match');
-    }
-
-    /**
-     * Tests the rendering with context validation failure to assert that an exception is thrown.
-     *
-     * @since [*next-version*]
-     */
-    public function testRenderContextInvalid()
-    {
-        $subject = $this->getMockForAbstractClass(static::TEST_SUBJECT_CLASSNAME);
-
-        $crException = $this->mock('Exception')
-            ->getMessage(uniqid('invalid-ctx-'))
-            ->getCode(rand(0, 10))
-            ->new();
-
-        $subject->expects($this->once())
-                ->method('_validateContext')
-                ->willThrowException($vfException = $this->createValidationFailedException());
-
-        $subject->expects($this->once())
-                ->method('_createContextRendererException')
-                ->willReturn($crException);
-
-        $this->setExpectedException('Exception');
-
-        $method = new ReflectionMethod(static::TEST_SUBJECT_CLASSNAME, '_render');
-        $method->setAccessible(true);
-        $method->invoke($subject);
-    }
-
-    /**
-     * Tests the rendering to ensure that context normalization occurs and that the abstracted render method gets
-     * invoked with the normalized context as argument.
-     *
-     * @since [*next-version*]
-     */
-    public function testRenderNormalizeContext()
-    {
-        $subject = $this->getMockForAbstractClass(static::TEST_SUBJECT_CLASSNAME);
-
-        $subject->expects($this->once())
-            ->method('_normalizeContext')
-            ->willReturn($normalizedCtx = ['some' => 'context', 'foo' => 'bar']);
-
-        $subject->expects($this->once())
-            ->method('_renderWithContext')
-            ->with($normalizedCtx);
-
-        $method = new ReflectionMethod(static::TEST_SUBJECT_CLASSNAME, '_render');
-        $method->setAccessible(true);
-        $method->invoke($subject);
+        $_subject->_render();
     }
 }

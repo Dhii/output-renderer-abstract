@@ -2,7 +2,7 @@
 
 namespace Dhii\Output;
 
-use Dhii\Output\Exception\ContextRenderExceptionInterface;
+use Dhii\Output\Exception\TemplateRenderExceptionInterface;
 use Dhii\Output\Exception\RendererExceptionInterface;
 use Dhii\Util\String\StringableInterface as Stringable;
 use Dhii\Validation\Exception\ValidationFailedExceptionInterface;
@@ -13,7 +13,7 @@ use Exception as RootException;
  *
  * @since [*next-version*]
  */
-abstract class AbstractContextRenderer
+abstract class AbstractTemplate
 {
     /**
      * Produce output based on context.
@@ -23,7 +23,7 @@ abstract class AbstractContextRenderer
      * @param mixed|null $context The context;
      *                            something that can provide more information on how to perform rendering.
      *
-     * @throws ContextRenderExceptionInterface If cannot render.
+     * @throws TemplateRenderExceptionInterface If cannot render.
      * @throws RendererExceptionInterface      Any other problem related to the renderer.
      *
      * @return string|Stringable The output.
@@ -33,7 +33,7 @@ abstract class AbstractContextRenderer
         try {
             $this->_validateContext($context);
         } catch (ValidationFailedExceptionInterface $exception) {
-            throw $this->_createContextRendererException(
+            throw $this->_createTemplateException(
                 $this->__('Given context is invalid'), null, $exception, $context
             );
         }
@@ -72,7 +72,7 @@ abstract class AbstractContextRenderer
      *
      * @param mixed $context The validated and normalized context.
      *
-     * @throws ContextRenderExceptionInterface If cannot render.
+     * @throws TemplateRenderExceptionInterface If cannot render.
      * @throws RendererExceptionInterface      Any other problem related to the renderer.
      *
      * @return string|Stringable The output.
@@ -89,9 +89,9 @@ abstract class AbstractContextRenderer
      * @param RootException|null     $previous The inner exception for chaining, if any.
      * @param mixed|null             $context  The context that was involved, if any.
      *
-     * @return ContextRenderExceptionInterface The new exception.
+     * @return TemplateRenderExceptionInterface The new exception.
      */
-    abstract protected function _createContextRendererException(
+    abstract protected function _createTemplateException(
         $message = null,
         $code = null,
         RootException $previous = null,

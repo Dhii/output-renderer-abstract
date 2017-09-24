@@ -2,7 +2,7 @@
 
 namespace Dhii\Output\FuncTest;
 
-use Dhii\Output\ContextRendererInterface;
+use Dhii\Output\TemplateInterface;
 use InvalidArgumentException;
 use Dhii\Output\RendererAwareTrait as TestSubject;
 use Xpmock\TestCase;
@@ -12,14 +12,14 @@ use Xpmock\TestCase;
  *
  * @since [*next-version*]
  */
-class ContextRendererAwareTraitTest extends TestCase
+class TemplateAwareTraitTest extends TestCase
 {
     /**
      * The class name of the test subject.
      *
      * @since [*next-version*]
      */
-    const TEST_SUBJECT_CLASSNAME = 'Dhii\Output\ContextRendererAwareTrait';
+    const TEST_SUBJECT_CLASSNAME = 'Dhii\Output\TemplateAwareTrait';
 
     /**
      * Creates a new instance of the test subject.
@@ -48,11 +48,11 @@ class ContextRendererAwareTraitTest extends TestCase
      *
      * @param string $output The render output of the renderer.
      *
-     * @return ContextRendererInterface The new context renderer.
+     * @return TemplateInterface The new context renderer.
      */
-    public function createContextRenderer($output = '')
+    public function createTemplate($output = '')
     {
-        $mock = $this->mock('Dhii\Output\ContextRendererInterface')
+        $mock = $this->mock('Dhii\Output\TemplateInterface')
                      ->render($output);
 
         return $mock->new();
@@ -65,7 +65,7 @@ class ContextRendererAwareTraitTest extends TestCase
      *
      * @param string $output The render output of the renderer.
      *
-     * @return ContextRendererInterface The new renderer.
+     * @return TemplateInterface The new renderer.
      */
     public function createRenderer($output = '')
     {
@@ -92,36 +92,36 @@ class ContextRendererAwareTraitTest extends TestCase
     }
 
     /**
-     * Tests the context renderer getter and setter methods to ensure correct assignment and retrieval.
+     * Tests the template getter and setter methods to ensure correct assignment and retrieval.
      *
      * @since [*next-version*]
      */
-    public function testGetSetContextRenderer()
+    public function testGetSetTemplate()
     {
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
 
-        $reflect->_setContextRenderer($renderer = $this->createContextRenderer());
+        $reflect->_setTemplate($renderer = $this->createTemplate());
 
         $this->assertSame(
             $renderer,
-            $reflect->_getContextRenderer(),
+            $reflect->_getTemplate(),
             'Set and retrieved context renderers are not the same.'
         );
     }
 
     /**
-     * Tests that an attempt to set an invalid context results in an appropriate exception being thrown.
+     * Tests that an attempt to set an invalid template results in an appropriate exception being thrown.
      *
      * @since [*next-version*]
      */
-    public function testGetSetContextRendererFailure()
+    public function testGetSetTemplateFailure()
     {
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
         $data = $this->createRenderer(uniqid('test-output-'));
 
         $this->setExpectedException('InvalidArgumentException');
-        $reflect->_setContextRenderer($data);
+        $reflect->_setTemplate($data);
     }
 }

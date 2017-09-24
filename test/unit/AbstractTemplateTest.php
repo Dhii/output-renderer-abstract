@@ -14,14 +14,14 @@ use Xpmock\TestCase;
  *
  * @since [*next-version*]
  */
-class AbstractContextRendererTest extends TestCase
+class AbstractTemplateTest extends TestCase
 {
     /**
      * The class name of the test subject.
      *
      * @since [*next-version*]
      */
-    const TEST_SUBJECT_CLASSNAME = 'Dhii\Output\AbstractContextRenderer';
+    const TEST_SUBJECT_CLASSNAME = 'Dhii\Output\AbstractTemplate';
 
     /**
      * Creates a new instance of the test subject.
@@ -64,14 +64,14 @@ class AbstractContextRendererTest extends TestCase
      *
      * @return mixed
      */
-    public function createContextRendererException(
+    public function createTemplateException(
         $message = '',
         $code = 0,
         $previous = null,
         $renderer = null,
         $context = null
     ) {
-        $mock = $this->mock('Dhii\Output\Exception\ContextRenderExceptionInterface')
+        $mock = $this->mock('Dhii\Output\Exception\TemplateRenderExceptionInterface')
                      ->getMessage($message)
                      ->getCode($code)
                      ->getPrevious($previous)
@@ -141,7 +141,7 @@ class AbstractContextRendererTest extends TestCase
                 ->willThrowException($vfException = $this->createValidationFailedException());
 
         $subject->expects($this->once())
-                ->method('_createContextRendererException')
+                ->method('_createTemplateException')
                 ->willReturn($crException);
 
         $this->setExpectedException('Exception');
