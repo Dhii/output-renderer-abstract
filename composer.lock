@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c362f527695e95cd719d8658f072bf89",
+    "content-hash": "53f5181b6fffee0750d9af40637f2ad4",
     "packages": [
         {
             "name": "dhii/exception-interface",
@@ -51,16 +51,16 @@
         },
         {
             "name": "dhii/output-renderer-interface",
-            "version": "dev-develop",
+            "version": "v0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dhii/output-renderer-interface.git",
-                "reference": "fbc37e1edee325c5c3e8497d4e416611abf60fdc"
+                "reference": "0605f02bef19dcc89a313b855389150c0481994b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dhii/output-renderer-interface/zipball/fbc37e1edee325c5c3e8497d4e416611abf60fdc",
-                "reference": "fbc37e1edee325c5c3e8497d4e416611abf60fdc",
+                "url": "https://api.github.com/repos/Dhii/output-renderer-interface/zipball/0605f02bef19dcc89a313b855389150c0481994b",
+                "reference": "0605f02bef19dcc89a313b855389150c0481994b",
                 "shasum": ""
             },
             "require": {
@@ -91,7 +91,7 @@
                 }
             ],
             "description": "An interface for objects that can perform rendering.",
-            "time": "2017-09-24 09:47:44"
+            "time": "2017-09-08T11:26:45+00:00"
         },
         {
             "name": "dhii/stringable-interface",
@@ -2328,9 +2328,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "dhii/output-renderer-interface": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
