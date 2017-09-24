@@ -45,7 +45,6 @@ class AbstractTemplateBlockTest extends TestCase
                 }));
         $mock->method('_createRendererException')
                 ->will($this->returnCallback(function($message) use (&$me, $mock) {
-                    var_dump('asdasdadasd');
                     return $me->createRendererException($message, $mock);
                 }));
         $mock->method('__')
