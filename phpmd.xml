@@ -17,7 +17,7 @@
     <rule ref="rulesets/unusedcode.xml" />
 
 
-    <rule ref="rulesets/controversial.xml/CamelCasePropertyName">
+    <rule ref="rulesets/controversial.xml/CamelCaseMethodName">
         <properties>
             <property name="allow-underscore" value="true" />
         </properties>
