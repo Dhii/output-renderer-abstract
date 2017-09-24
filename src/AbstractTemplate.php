@@ -80,7 +80,7 @@ abstract class AbstractTemplate
     abstract protected function _renderWithContext($context);
 
     /**
-     * Creates a new context render failure exception.
+     * Creates a new template render failure exception.
      *
      * @since [*next-version*]
      *
