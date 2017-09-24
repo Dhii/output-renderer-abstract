@@ -20,7 +20,7 @@ trait RendererAwareTrait
      *
      * @var RendererInterface|null
      */
-    protected $_renderer;
+    protected $renderer;
 
     /**
      * Retrieves the renderer associated with this instance.
@@ -31,7 +31,7 @@ trait RendererAwareTrait
      */
     protected function _getRenderer()
     {
-        return $this->_renderer;
+        return $this->renderer;
     }
 
     /**
@@ -52,7 +52,7 @@ trait RendererAwareTrait
             );
         }
 
-        $this->_renderer = $renderer;
+        $this->renderer = $renderer;
     }
 
     /**
