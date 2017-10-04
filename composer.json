@@ -13,7 +13,7 @@
     "prefer-stable": true,
     "require": {
         "php": "^5.4 | ^7.0",
-        "dhii/output-renderer-interface": "^0.1",
+        "dhii/output-renderer-interface": "^0.2",
         "psr/container": "^1.0"
     },
     "require-dev": {
