@@ -10,14 +10,14 @@ use Psr\Container\ContainerInterface;
 /**
  * Common functionality for objects that are aware of a context.
  *
- * @since [*next-version*]
+ * @since 0.1
  */
 trait ContextAwareTrait
 {
     /**
      * The context.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @var ContainerInterface|null
      */
@@ -26,7 +26,7 @@ trait ContextAwareTrait
     /**
      * Retrieves the context associated with this instance.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @return ContainerInterface|null The context.
      */
@@ -38,7 +38,7 @@ trait ContextAwareTrait
     /**
      * Sets the context for this instance.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param ContainerInterface|null $context The context instance, or null.
      */
@@ -59,7 +59,7 @@ trait ContextAwareTrait
     /**
      * Creates a new Dhii invalid argument exception.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param string|Stringable|null $message  The error message, if any.
      * @param int|null               $code     The error code, if any.
@@ -78,7 +78,7 @@ trait ContextAwareTrait
     /**
      * Translates a string, and replaces placeholders.
      *
-     * @since [*next-version*]
+     * @since 0.1
      * @see   sprintf()
      *
      * @param string $string  The format string to translate.

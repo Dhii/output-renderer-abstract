@@ -9,21 +9,21 @@ use Dhii\Output\BlockAwareTrait as TestSubject;
 /**
  * Tests {@see TestSubject}.
  *
- * @since [*next-version*]
+ * @since 0.1
  */
 class BlockAwareTraitTest extends TestCase
 {
     /**
      * The class name of the test subject.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     const TEST_SUBJECT_CLASSNAME = 'Dhii\Output\BlockAwareTrait';
 
     /**
      * Creates a new instance of the test subject.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @return TestSubject
      */
@@ -38,7 +38,7 @@ class BlockAwareTraitTest extends TestCase
     /**
      * Creates a new mocked block instance for testing purposes.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param string $output The render output of the block.
      *
@@ -56,7 +56,7 @@ class BlockAwareTraitTest extends TestCase
     /**
      * Tests whether a valid instance of the test subject can be created.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     public function testCanBeCreated()
     {
@@ -72,7 +72,7 @@ class BlockAwareTraitTest extends TestCase
     /**
      * Tests the block getter and setter methods to ensure correct assignment and retrieval.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     public function testGetSetBlock()
     {

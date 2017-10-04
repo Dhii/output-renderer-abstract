@@ -7,14 +7,14 @@ use Exception as RootException;
 /**
  * Functionality for template setting and retrieval.
  *
- * @since [*next-version*]
+ * @since 0.1
  */
 trait TemplateAwareTrait
 {
     /**
      * The template.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @var TemplateInterface|null
      */
@@ -23,7 +23,7 @@ trait TemplateAwareTrait
     /**
      * Retrieves the template associated with this instance.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @return TemplateInterface|null The template.
      */
@@ -35,7 +35,7 @@ trait TemplateAwareTrait
     /**
      * Assigns the template to this instance..
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param TemplateInterface|null $template The template.
      */
@@ -51,7 +51,7 @@ trait TemplateAwareTrait
     /**
      * Creates a new Dhii invalid argument exception.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param string|Stringable|null $message  The error message, if any.
      * @param int|null               $code     The error code, if any.
@@ -70,7 +70,7 @@ trait TemplateAwareTrait
     /**
      * Translates a string, and replaces placeholders.
      *
-     * @since [*next-version*]
+     * @since 0.1
      * @see   sprintf()
      *
      * @param string $string  The format string to translate.

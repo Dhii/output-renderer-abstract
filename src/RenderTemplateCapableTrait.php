@@ -10,7 +10,7 @@ use Dhii\Output\Exception\TemplateRenderExceptionInterface;
 /**
  * Functionality for rendering a template.
  *
- * @since [*next-version*]
+ * @since 0.1
  */
 trait RenderTemplateCapableTrait
 {
@@ -20,7 +20,7 @@ trait RenderTemplateCapableTrait
      * @param TemplateInterface       $template The template to render.
      * @param ContainerInterface|null $context  The context to use for rendering.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @throws TemplateRenderExceptionInterface The template may throw this if a problem occurs.
      * @throws RendererExceptionInterface       The template may throw this if a problem specific to rendering occurs.

@@ -10,7 +10,7 @@ use Dhii\Output\Exception\CouldNotRenderExceptionInterface;
 /**
  * Common abstract functionality for blocks.
  *
- * @since [*next-version*]
+ * @since 0.1
  */
 abstract class AbstractBlock
 {
@@ -33,7 +33,7 @@ abstract class AbstractBlock
     /**
      * Renders the block.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @throws CouldNotRenderExceptionInterface If a rendering error occurs.
      * @throws RendererExceptionInterface       If an error unrelated to rendering occurs.
@@ -45,7 +45,7 @@ abstract class AbstractBlock
     /**
      * Produces output when an exception is thrown while rendering via {@see __toString()}.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param Exception $exception The exception that was thrown during rendering.
      *

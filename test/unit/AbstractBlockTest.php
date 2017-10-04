@@ -10,21 +10,21 @@ use Xpmock\TestCase;
 /**
  * Tests {@see TestSubject}.
  *
- * @since [*next-version*]
+ * @since 0.1
  */
 class AbstractBlockTest extends TestCase
 {
     /**
      * The class name of the test subject.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     const TEST_SUBJECT_CLASSNAME = 'Dhii\Output\AbstractBlock';
 
     /**
      * Creates a new instance of the test subject.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @return PHPUnit_Framework_MockObject_MockObject
      */
@@ -40,7 +40,7 @@ class AbstractBlockTest extends TestCase
     /**
      * Creates a mocked exception instance for testing purposes.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param string         $message  The exception error message.
      * @param int|null       $code     The exception code.
@@ -61,7 +61,7 @@ class AbstractBlockTest extends TestCase
     /**
      * Creates a stringable object that represents a given string.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param string $string The string for the stringable to represents.
      *
@@ -79,7 +79,7 @@ class AbstractBlockTest extends TestCase
     /**
      * Tests whether a valid instance of the test subject can be created.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     public function testCanBeCreated()
     {
@@ -95,7 +95,7 @@ class AbstractBlockTest extends TestCase
     /**
      * Tests the __toString method to ensure that the output is correct.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     public function testToString()
     {
@@ -117,7 +117,7 @@ class AbstractBlockTest extends TestCase
     /**
      * Tests the __toString method to ensure that internal exceptions are handled and some output is still provided.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     public function testToStringOnException()
     {
@@ -145,7 +145,7 @@ class AbstractBlockTest extends TestCase
     /**
      * Tests whether the test subject can be casted into a string.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     public function testCanBeCastedToString()
     {
@@ -167,7 +167,7 @@ class AbstractBlockTest extends TestCase
     /**
      * Tests whether the test subject can be casted into a string when an exception is thrown internally.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     public function testCanBeCastedToStringOnException()
     {

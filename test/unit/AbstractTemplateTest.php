@@ -12,21 +12,21 @@ use Xpmock\TestCase;
 /**
  * Tests {@see TestSubject}.
  *
- * @since [*next-version*]
+ * @since 0.1
  */
 class AbstractTemplateTest extends TestCase
 {
     /**
      * The class name of the test subject.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     const TEST_SUBJECT_CLASSNAME = 'Dhii\Output\AbstractTemplate';
 
     /**
      * Creates a new instance of the test subject.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @return PHPUnit_Framework_MockObject_MockObject
      */
@@ -40,7 +40,7 @@ class AbstractTemplateTest extends TestCase
     /**
      * Creates a validation failed exception for testing purposes.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @return ValidationFailedException
      */
@@ -54,7 +54,7 @@ class AbstractTemplateTest extends TestCase
     /**
      * Creates a mocked context renderer exception for testing purposes.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param string                 $message  The message.
      * @param int|null               $code     The code.
@@ -89,7 +89,7 @@ class AbstractTemplateTest extends TestCase
     /**
      * Tests whether a valid instance of the test subject can be created.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     public function testCanBeCreated()
     {
@@ -105,7 +105,7 @@ class AbstractTemplateTest extends TestCase
     /**
      * Tests the rendering to ensure that the appropriate internal methods are called and that output can be produced.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     public function testRender()
     {
@@ -125,7 +125,7 @@ class AbstractTemplateTest extends TestCase
     /**
      * Tests the rendering with context validation failure to assert that an exception is thrown.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     public function testRenderContextInvalid()
     {
@@ -155,7 +155,7 @@ class AbstractTemplateTest extends TestCase
      * Tests the rendering to ensure that context normalization occurs and that the abstracted render method gets
      * invoked with the normalized context as argument.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     public function testRenderNormalizeContext()
     {

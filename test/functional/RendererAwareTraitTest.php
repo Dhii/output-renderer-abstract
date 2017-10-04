@@ -9,21 +9,21 @@ use Dhii\Output\RendererAwareTrait as TestSubject;
 /**
  * Tests {@see TestSubject}.
  *
- * @since [*next-version*]
+ * @since 0.1
  */
 class RendererAwareTraitTest extends TestCase
 {
     /**
      * The class name of the test subject.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     const TEST_SUBJECT_CLASSNAME = 'Dhii\Output\RendererAwareTrait';
 
     /**
      * Creates a new instance of the test subject.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @return TestSubject
      */
@@ -38,7 +38,7 @@ class RendererAwareTraitTest extends TestCase
     /**
      * Creates a new mocked renderer instance for testing purposes.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param string $output The render output of the renderer.
      *
@@ -55,7 +55,7 @@ class RendererAwareTraitTest extends TestCase
     /**
      * Tests whether a valid instance of the test subject can be created.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     public function testCanBeCreated()
     {
@@ -71,7 +71,7 @@ class RendererAwareTraitTest extends TestCase
     /**
      * Tests the renderer getter and setter methods to ensure correct assignment and retrieval.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     public function testGetSetRenderer()
     {

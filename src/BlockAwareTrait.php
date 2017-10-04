@@ -9,14 +9,14 @@ use Dhii\Util\String\StringableInterface as Stringable;
 /**
  * Common functionality for objects that are aware of a block.
  *
- * @since [*next-version*]
+ * @since 0.1
  */
 trait BlockAwareTrait
 {
     /**
      * The block instance.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @var BlockInterface|null
      */
@@ -25,7 +25,7 @@ trait BlockAwareTrait
     /**
      * Retrieves the block associated with this instance.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @return BlockInterface|null The block.
      */
@@ -37,7 +37,7 @@ trait BlockAwareTrait
     /**
      * Sets the block for this instance.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param BlockInterface|null $block The block instance, or null.
      */
@@ -58,7 +58,7 @@ trait BlockAwareTrait
     /**
      * Creates a new Dhii invalid argument exception.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param string|Stringable|null $message  The error message, if any.
      * @param int|null               $code     The error code, if any.
@@ -77,7 +77,7 @@ trait BlockAwareTrait
     /**
      * Translates a string, and replaces placeholders.
      *
-     * @since [*next-version*]
+     * @since 0.1
      * @see   sprintf()
      *
      * @param string $string  The format string to translate.

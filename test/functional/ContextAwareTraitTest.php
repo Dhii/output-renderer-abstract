@@ -9,21 +9,21 @@ use Dhii\Output\ContextAwareTrait as TestSubject;
 /**
  * Tests {@see TestSubject}.
  *
- * @since [*next-version*]
+ * @since 0.1
  */
 class ContextAwareTraitTest extends TestCase
 {
     /**
      * The class name of the test subject.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     const TEST_SUBJECT_CLASSNAME = 'Dhii\Output\ContextAwareTrait';
 
     /**
      * Creates a new instance of the test subject.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @return TestSubject
      */
@@ -38,7 +38,7 @@ class ContextAwareTraitTest extends TestCase
     /**
      * Creates a new container for values.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param array $data The map of values.
      *
@@ -58,7 +58,7 @@ class ContextAwareTraitTest extends TestCase
     /**
      * Tests whether a valid instance of the test subject can be created.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     public function testCanBeCreated()
     {
@@ -74,7 +74,7 @@ class ContextAwareTraitTest extends TestCase
     /**
      * Tests the context getter and setter methods to ensure correct assignment and retrieval.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     public function testGetSetContext()
     {

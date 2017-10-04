@@ -13,21 +13,21 @@ use Dhii\Output\TemplateInterface;
 /**
  * Tests {@see TestSubject}.
  *
- * @since [*next-version*]
+ * @since 0.1
  */
 class AbstractTemplateBlockTest extends TestCase
 {
     /**
      * The class name of the test subject.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     const TEST_SUBJECT_CLASSNAME = 'Dhii\Output\AbstractTemplateBlock';
 
     /**
      * Creates a new instance of the test subject.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @return TestSubject The new instance.
      */
@@ -60,7 +60,7 @@ class AbstractTemplateBlockTest extends TestCase
      * internal class, such as in the case with exceptions. Helps to avoid
      * writing hard-coded stubs.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param string $className      Name of the class for the mock to extend.
      * @param string $interfaceNames Names of the interfaces for the mock to implement.
@@ -83,7 +83,7 @@ class AbstractTemplateBlockTest extends TestCase
     /**
      * Creates a validation failed exception.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @return CouldNotRenderExceptionInterface The new exception
      */
@@ -101,7 +101,7 @@ class AbstractTemplateBlockTest extends TestCase
     /**
      * Creates a validation failed exception.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @return RendererExceptionInterface The new exception
      */
@@ -119,7 +119,7 @@ class AbstractTemplateBlockTest extends TestCase
     /**
      * Creates a mocked context renderer exception.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param string                 $message  The message.
      * @param int|null               $code     The code.
@@ -154,7 +154,7 @@ class AbstractTemplateBlockTest extends TestCase
     /**
      * Creates a new template.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param string $content The content of the template.
      *
@@ -172,7 +172,7 @@ class AbstractTemplateBlockTest extends TestCase
     /**
      * Tests whether a valid instance of the test subject can be created.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     public function testCanBeCreated()
     {
@@ -188,7 +188,7 @@ class AbstractTemplateBlockTest extends TestCase
     /**
      * Tests the rendering to ensure that the appropriate internal methods are called and that output can be produced.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     public function testRender()
     {

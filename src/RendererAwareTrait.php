@@ -9,14 +9,14 @@ use Dhii\Util\String\StringableInterface as Stringable;
 /**
  * Common functionality for objects that are aware of a renderer.
  *
- * @since [*next-version*]
+ * @since 0.1
  */
 trait RendererAwareTrait
 {
     /**
      * The renderer instance.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @var RendererInterface|null
      */
@@ -25,7 +25,7 @@ trait RendererAwareTrait
     /**
      * Retrieves the renderer associated with this instance.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @return RendererInterface|null The renderer.
      */
@@ -37,7 +37,7 @@ trait RendererAwareTrait
     /**
      * Sets the renderer for this instance.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param RendererInterface|null $renderer The renderer instance, or null.
      */
@@ -58,7 +58,7 @@ trait RendererAwareTrait
     /**
      * Creates a new Dhii invalid argument exception.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param string|Stringable|null $message  The error message, if any.
      * @param int|null               $code     The error code, if any.
@@ -77,7 +77,7 @@ trait RendererAwareTrait
     /**
      * Translates a string, and replaces placeholders.
      *
-     * @since [*next-version*]
+     * @since 0.1
      * @see   sprintf()
      *
      * @param string $string  The format string to translate.

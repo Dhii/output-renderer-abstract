@@ -11,14 +11,14 @@ use Exception as RootException;
 /**
  * Common abstract functionality for renderers that can render using an optional context.
  *
- * @since [*next-version*]
+ * @since 0.1
  */
 abstract class AbstractTemplate
 {
     /**
      * Produce output based on context.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param mixed|null $context The context;
      *                            something that can provide more information on how to perform rendering.
@@ -46,7 +46,7 @@ abstract class AbstractTemplate
     /**
      * Validates the context.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param mixed $context The context to validate.
      *
@@ -57,7 +57,7 @@ abstract class AbstractTemplate
     /**
      * Normalizes the context into data usable by the renderer for producing output.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param mixed $context The context to normalize.
      *
@@ -68,7 +68,7 @@ abstract class AbstractTemplate
     /**
      * Produces output using a given context.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param mixed $context The validated and normalized context.
      *
@@ -82,7 +82,7 @@ abstract class AbstractTemplate
     /**
      * Creates a new template render failure exception.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param string|Stringable|null $message  The error message, if any.
      * @param int|null               $code     The error code, if any.
@@ -101,7 +101,7 @@ abstract class AbstractTemplate
     /**
      * Translates a string, and replaces placeholders.
      *
-     * @since [*next-version*]
+     * @since 0.1
      * @see sprintf()
      *
      * @param string $string  The format string to translate.

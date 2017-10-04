@@ -11,14 +11,14 @@ use Dhii\Util\String\StringableInterface as Stringable;
 /**
  * Common functionality for template rendering.
  *
- * @since [*next-version*]
+ * @since 0.1
  */
 abstract class AbstractTemplateBlock extends AbstractBlock
 {
     /**
      * Retrieves the template associated with this instance.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @return TemplateInterface|null The template.
      */
@@ -29,7 +29,7 @@ abstract class AbstractTemplateBlock extends AbstractBlock
      *
      * @param TemplateInterface $template The template, for which to get the context.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @return ContainerInterface The context.
      */
@@ -38,7 +38,7 @@ abstract class AbstractTemplateBlock extends AbstractBlock
     /**
      * Creates a new render failure exception.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param string|Stringable|null $message  The error message, if any.
      * @param int|null               $code     The error code, if any.
@@ -55,7 +55,7 @@ abstract class AbstractTemplateBlock extends AbstractBlock
     /**
      * Creates a new render-related exception.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @param string|Stringable|null $message  The error message, if any.
      * @param int|null               $code     The error code, if any.
@@ -72,7 +72,7 @@ abstract class AbstractTemplateBlock extends AbstractBlock
     /**
      * Translates a string, and replaces placeholders.
      *
-     * @since [*next-version*]
+     * @since 0.1
      * @see sprintf()
      *
      * @param string $string  The format string to translate.
@@ -88,7 +88,7 @@ abstract class AbstractTemplateBlock extends AbstractBlock
      *
      * Uses a template.
      *
-     * @since [*next-version*]
+     * @since 0.1
      */
     protected function _render()
     {
@@ -112,7 +112,7 @@ abstract class AbstractTemplateBlock extends AbstractBlock
      * @param TemplateInterface       $template The template to render.
      * @param ContainerInterface|null $context  The context to use for rendering.
      *
-     * @since [*next-version*]
+     * @since 0.1
      *
      * @throws TemplateRenderExceptionInterface The template may throw this if a problem occurs.
      * @throws RendererExceptionInterface       The template may throw this if a problem specific to rendering occurs.
