@@ -13,7 +13,9 @@ This package provides abstract functionality for the most common implementations
 of output renderers. The classes are meant to implement functionality for
 interfaces in [`dhii/output-renderer-interface`], although of course they can
 be used for other purposes. This is a good place to start of you are creating
-your own renderer of a new kind.
+your own renderer of a new kind. If you are looking for a little more
+specialized yet common functionality that extends this, see
+[`dhii/output-renderer-base`].
 
 ### Classes
 - [`AbstractBlock`] - Intended for [`BlockInterface`], which is usually
@@ -40,7 +42,8 @@ template. Does minimal validation. Can be used to back up
 
 
 [Dhii]:                                         https://github.com/Dhii/dhii
-[`dhii/output-renderer-interface`]:             Dhii/output-renderer-interface
+[`dhii/output-renderer-interface`]:             https://github.com/Dhii/output-renderer-interface
+[`dhii/output-renderer-base`]:                  https://github.com/Dhii/output-renderer-base
 
 [`AbstractBlock`]:                  src/AbstractBlock.php
 [`AbstractTemplate`]:               src/AbstractTemplate.php
