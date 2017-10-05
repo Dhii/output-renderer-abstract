@@ -2,7 +2,7 @@
 
 namespace Dhii\Output\UnitTest;
 
-use Dhii\Output\RendererInterface;
+use InvalidArgumentException;
 use Dhii\Validation\Exception\ValidationFailedException;
 use Exception;
 use PHPUnit_Framework_MockObject_MockObject;
@@ -52,31 +52,28 @@ class AbstractTemplateTest extends TestCase
     }
 
     /**
-     * Creates a mocked context renderer exception for testing purposes.
+     * Creates a mocked invalid argument exception for testing purposes.
      *
      * @since 0.1
      *
-     * @param string                 $message  The message.
-     * @param int|null               $code     The code.
-     * @param Exception|null         $previous The previous exception.
-     * @param RendererInterface|null $renderer The renderer.
-     * @param mixed|null             $context  The context.
+     * @param string         $message  The message.
+     * @param int|null       $code     The code.
+     * @param Exception|null $previous The previous exception.
+     * @param mixed|null     $argument The argument.
      *
-     * @return mixed
+     * @return InvalidArgumentException The new exception.
      */
-    public function createTemplateException(
+    public function createInvalidArgumentException(
         $message = '',
         $code = 0,
         $previous = null,
-        $renderer = null,
-        $context = null
+        $argument = null
     ) {
-        $mock = $this->mock('Dhii\Output\Exception\TemplateRenderExceptionInterface')
+        $mock = $this->mock('InvalidArgumentException')
                      ->getMessage($message)
                      ->getCode($code)
                      ->getPrevious($previous)
-                     ->getRenderer($renderer)
-                     ->getContext($context)
+                     ->getArgument($argument)
                      ->getLine()
                      ->getFile()
                      ->getTrace()
@@ -130,21 +127,19 @@ class AbstractTemplateTest extends TestCase
     public function testRenderContextInvalid()
     {
         $subject = $this->getMockForAbstractClass(static::TEST_SUBJECT_CLASSNAME);
-
-        $crException = $this->mock('Exception')
-            ->getMessage(uniqid('invalid-ctx-'))
-            ->getCode(rand(0, 10))
-            ->new();
+        $me = $this;
 
         $subject->expects($this->once())
                 ->method('_validateContext')
                 ->willThrowException($vfException = $this->createValidationFailedException());
 
         $subject->expects($this->once())
-                ->method('_createTemplateException')
-                ->willReturn($crException);
+                ->method('_createInvalidArgumentException')
+                ->willReturnCallback(function ($message = null, $code = null, $previous = null, $arg = null) use ($me) {
+                    return $me->createInvalidArgumentException($message, $code, $previous, $arg);
+                });
 
-        $this->setExpectedException('Exception');
+        $this->setExpectedException('InvalidArgumentException');
 
         $method = new ReflectionMethod(static::TEST_SUBJECT_CLASSNAME, '_render');
         $method->setAccessible(true);

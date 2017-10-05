@@ -33,8 +33,8 @@ abstract class AbstractTemplate
         try {
             $this->_validateContext($context);
         } catch (ValidationFailedExceptionInterface $exception) {
-            throw $this->_createTemplateException(
-                $this->__('Given context is invalid'), null, $exception, $context
+            throw $this->_createInvalidArgumentException(
+                $this->__('Invalid context'), null, $exception, $context
             );
         }
 
@@ -80,22 +80,22 @@ abstract class AbstractTemplate
     abstract protected function _renderWithContext($context);
 
     /**
-     * Creates a new template render failure exception.
+     * Creates a new Dhii invalid argument exception.
      *
      * @since 0.1
      *
      * @param string|Stringable|null $message  The error message, if any.
      * @param int|null               $code     The error code, if any.
      * @param RootException|null     $previous The inner exception for chaining, if any.
-     * @param mixed|null             $context  The context that was involved, if any.
+     * @param mixed|null             $argument The invalid argument, if any.
      *
-     * @return TemplateRenderExceptionInterface The new exception.
+     * @return BaseInvalidArgumentException The new exception.
      */
-    abstract protected function _createTemplateException(
-        $message = null,
-        $code = null,
-        RootException $previous = null,
-        $context = null
+    abstract protected function _createInvalidArgumentException(
+            $message = null,
+            $code = null,
+            RootException $previous = null,
+            $argument = null
     );
 
     /**
