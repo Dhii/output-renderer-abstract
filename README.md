@@ -12,7 +12,7 @@ Common abstract functionality for output renderers.
 This package provides abstract functionality for the most common implementations
 of output renderers. The classes are meant to implement functionality for
 interfaces in [`dhii/output-renderer-interface`], although of course they can
-be used for other purposes. This is a good place to start of you are creating
+be used for other purposes. This is a good place to start if you are creating
 your own renderer of a new kind. If you are looking for a little more
 specialized yet common functionality that extends this, see
 [`dhii/output-renderer-base`].
