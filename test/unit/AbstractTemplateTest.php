@@ -119,16 +119,7 @@ class AbstractTemplateTest extends TestCase
         $previous = null,
         $argument = null
     ) {
-        $mock = $this->mock('InvalidArgumentException')
-                     ->getMessage($message)
-                     ->getCode($code)
-                     ->getPrevious($previous)
-                     ->getArgument($argument)
-                     ->getLine()
-                     ->getFile()
-                     ->getTrace()
-                     ->getTraceAsString()
-                     ->__toString();
+        $mock = $this->mock('InvalidArgumentException');
 
         return $mock->new();
     }
