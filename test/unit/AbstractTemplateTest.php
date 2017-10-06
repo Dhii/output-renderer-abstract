@@ -3,7 +3,7 @@
 namespace Dhii\Output\UnitTest;
 
 use Dhii\Output\RendererInterface;
-use Dhii\Validation\Exception\ValidationFailedException;
+use Dhii\Validation\Exception\ValidationFailedExceptionInterface;
 use Exception;
 use PHPUnit_Framework_MockObject_MockObject;
 use ReflectionMethod;
@@ -38,15 +38,65 @@ class AbstractTemplateTest extends TestCase
     }
 
     /**
+     * Creates a mock that both extends a class and implements interfaces.
+     *
+     * This is particularly useful for cases where the mock is based on an
+     * internal class, such as in the case with exceptions. Helps to avoid
+     * writing hard-coded stubs.
+     *
+     * @since 0.1
+     *
+     * @param string $className      Name of the class for the mock to extend.
+     * @param string $interfaceNames Names of the interfaces for the mock to implement.
+     *
+     * @return object The object that extends and implements the specified class and interfaces.
+     */
+    public function mockClassAndInterfaces($className, $interfaceNames = [])
+    {
+        $paddingClassName = uniqid($className);
+        $definition = vsprintf('abstract class %1$s extends %2$s implements %3$s {}', [
+            $paddingClassName,
+            $className,
+            implode(', ', $interfaceNames),
+        ]);
+        eval($definition);
+
+        return $this->getMockForAbstractClass($paddingClassName);
+    }
+
+    /**
      * Creates a validation failed exception for testing purposes.
      *
      * @since 0.1
      *
-     * @return ValidationFailedException
+     * @return ValidationFailedExceptionInterface
      */
     public function createValidationFailedException()
     {
-        $mock = $this->getMock('Dhii\Validation\Exception\ValidationFailedException');
+        $mock = $this->mockClassAndInterfaces('Exception', ['Dhii\Validation\Exception\ValidationFailedExceptionInterface']);
+        $mock->method('getValidationErrors')
+                ->will($this->returnValue(null));
+        $mock->method('getValidator')
+                ->will($this->returnValue(null));
+        $mock->method('getSubject')
+                ->will($this->returnValue(null));
+
+        $mock->method('getMessage')
+                ->will($this->returnValue(null));
+        $mock->method('getFile')
+                ->will($this->returnValue(null));
+        $mock->method('getLine')
+                ->will($this->returnValue(null));
+        $mock->method('getPrevious')
+                ->will($this->returnValue(null));
+        $mock->method('getCode')
+                ->will($this->returnValue(null));
+        $mock->method('getTrace')
+                ->will($this->returnValue(null));
+        $mock->method('getTraceAsString')
+                ->will($this->returnValue(null));
+        $mock->method('__toString')
+                ->will($this->returnValue(null));
 
         return $mock;
     }
