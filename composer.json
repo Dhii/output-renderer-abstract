@@ -21,7 +21,7 @@
         "ptrofimov/xpmock": "^1.1",
         "dhii/php-cs-fixer-config": "^0.1",
         "codeclimate/php-test-reporter": "<=0.3.2",
-        "dhii/validation-base": "^0.1",
+        "dhii/validation-interface": "dev-develop",
         "dhii/exception-interface": "^0.1"
     },
     "autoload": {
