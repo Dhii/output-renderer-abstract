@@ -15,6 +15,17 @@ use Dhii\Output\Exception\CouldNotRenderExceptionInterface;
 abstract class AbstractBlock
 {
     /**
+     * Parameter-less constructor.
+     *
+     * Invoke this in actual constructor.
+     *
+     * @since 0.1
+     */
+    protected function _construct()
+    {
+    }
+
+    /**
      * Converts this block to string by rendering it.
      *
      * @link http://php.net/manual/en/language.oop5.magic.php#language.oop5.magic.tostring

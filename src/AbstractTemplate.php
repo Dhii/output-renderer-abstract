@@ -16,6 +16,17 @@ use Exception as RootException;
 abstract class AbstractTemplate
 {
     /**
+     * Parameter-less constructor.
+     *
+     * Invoke this in actual constructor.
+     *
+     * @since 0.1
+     */
+    protected function _construct()
+    {
+    }
+
+    /**
      * Produce output based on context.
      *
      * @since 0.1
