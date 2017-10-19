@@ -3,6 +3,7 @@
 namespace Dhii\Output;
 
 use Exception as RootException;
+use InvalidArgumentException;
 
 /**
  * Functionality for template setting and retrieval.

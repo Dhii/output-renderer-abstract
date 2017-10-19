@@ -7,6 +7,7 @@ use Dhii\Output\Exception\RendererExceptionInterface;
 use Dhii\Util\String\StringableInterface as Stringable;
 use Dhii\Validation\Exception\ValidationFailedExceptionInterface;
 use Exception as RootException;
+use InvalidArgumentException;
 
 /**
  * Common abstract functionality for renderers that can render using an optional context.
@@ -91,7 +92,7 @@ abstract class AbstractTemplate
     abstract protected function _renderWithContext($context);
 
     /**
-     * Creates a new Dhii invalid argument exception.
+     * Creates a new invalid argument exception.
      *
      * @since 0.1
      *
@@ -100,7 +101,7 @@ abstract class AbstractTemplate
      * @param RootException|null     $previous The inner exception for chaining, if any.
      * @param mixed|null             $argument The invalid argument, if any.
      *
-     * @return BaseInvalidArgumentException The new exception.
+     * @return InvalidArgumentException The new exception.
      */
     abstract protected function _createInvalidArgumentException(
             $message = null,

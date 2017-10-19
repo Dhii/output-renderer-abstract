@@ -57,7 +57,7 @@ trait ContextAwareTrait
     }
 
     /**
-     * Creates a new Dhii invalid argument exception.
+     * Creates a new invalid argument exception.
      *
      * @since 0.1
      *
