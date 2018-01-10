@@ -12,13 +12,17 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^5.4 | ^7.0"
+        "php": "^5.4 | ^7.0",
+        "dhii/output-renderer-interface": "^0.2",
+        "psr/container": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8",
         "ptrofimov/xpmock": "^1.1",
         "dhii/php-cs-fixer-config": "^0.1",
-        "codeclimate/php-test-reporter": "<=0.3.2"
+        "codeclimate/php-test-reporter": "<=0.3.2",
+        "dhii/validation-interface": "dev-develop",
+        "dhii/exception-interface": "^0.1"
     },
     "autoload": {
         "psr-4": {
@@ -28,5 +32,10 @@
     "scripts": {
         "test": "phpunit",
         "csfix": "php-cs-fixer fix -vvv"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "0.1.x-dev"
+        }
     }
 }
