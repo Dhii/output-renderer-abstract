@@ -4,10 +4,9 @@ namespace Dhii\Output\UnitTest;
 
 use Dhii\Output\RendererInterface;
 use Dhii\Output\Exception\CouldNotRenderExceptionInterface;
-use Dhii\Output\Exception\RendererExceptionInterface;
 use Exception as RootException;
 use Xpmock\TestCase;
-use Dhii\Output\RenderCapableTrait as TestSubject;
+use Dhii\Output\RenderCapableBlockTrait as TestSubject;
 use Dhii\Output\TemplateInterface;
 use PHPUnit_Framework_MockObject_MockObject as MockObject;
 
@@ -16,14 +15,14 @@ use PHPUnit_Framework_MockObject_MockObject as MockObject;
  *
  * @since [*next-version*]
  */
-class RenderCapableTraitTest extends TestCase
+class RenderCapableBlockTraitTest extends TestCase
 {
     /**
      * The class name of the test subject.
      *
      * @since [*next-version*]
      */
-    const TEST_SUBJECT_CLASSNAME = 'Dhii\Output\RenderCapableTrait';
+    const TEST_SUBJECT_CLASSNAME = 'Dhii\Output\RenderCapableBlockTrait';
 
     /**
      * Creates a new instance of the test subject.

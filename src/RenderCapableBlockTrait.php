@@ -10,14 +10,14 @@ use Psr\Container\ContainerInterface;
 use Dhii\Util\String\StringableInterface as Stringable;
 
 /**
- * Functionality for rendering a template.
+ * Functionality for rendering an internal template with internal context.
  *
  * @since [*next-version*]
  */
-trait RenderCapableTrait
+trait RenderCapableBlockTrait
 {
     /**
-     * Renders a template.
+     * Renders an internal template.
      *
      * @since [*next-version*]
      *

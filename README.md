@@ -18,10 +18,10 @@ specialized yet common functionality that extends this, see
 [`dhii/output-renderer-base`].
 
 ### Classes
-- [`AbstractBlock`] - Intended for [`BlockInterface`], which is usually
+- [`StringableRenderCatcherTrait`] - Intended for [`BlockInterface`], which is usually
 something that contains all data needed to produce output. Takes care of what
 happens when it is cast to string.
-- [`RenderCapableTrait`] - Renders a template using an internal context.
+- [`RenderCapableBlockTrait`] - Renders a template using an internal context.
 - [`BlockAwareTrait`] - Internal functionality for storing and retrieving a
 block. Does minimal validation. Can be used to back up [`BlockAwareInterface`].
 - [`ContextAwareTrait`] - Internal functionality for storing and retrieving a
@@ -40,8 +40,8 @@ template. Does minimal validation. Can be used to back up
 [`dhii/output-renderer-interface`]:             https://github.com/Dhii/output-renderer-interface
 [`dhii/output-renderer-base`]:                  https://github.com/Dhii/output-renderer-base
 
-[`AbstractBlock`]:                  src/AbstractBlock.php
-[`RenderCapableTrait`]:             src/RenderCapableTrait.php
+[`StringableRenderCatcherTrait`]:   src/StringableRenderCatcherTrait.php
+[`RenderCapableBlockTrait`]:        src/RenderCapableBlockTrait.php
 [`BlockAwareTrait`]:                src/BlockAwareTrait.php
 [`ContextAwareTrait`]:              src/ContextAwareTrait.php
 [`RenderTemplateCapableTrait`]:     src/RenderTemplateCapableTrait.php
