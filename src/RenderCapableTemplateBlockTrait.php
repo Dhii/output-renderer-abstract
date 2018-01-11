@@ -14,7 +14,7 @@ use Dhii\Util\String\StringableInterface as Stringable;
  *
  * @since [*next-version*]
  */
-trait RenderCapableBlockTrait
+trait RenderCapableTemplateBlockTrait
 {
     /**
      * Renders an internal template.
