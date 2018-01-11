@@ -17,8 +17,8 @@ trait RenderTemplateCapableTrait
     /**
      * Renders a template with context.
      *
-     * @param TemplateInterface       $template The template to render.
-     * @param ContainerInterface|null $context  The context to use for rendering.
+     * @param TemplateInterface             $template The template to render.
+     * @param ContainerInterface|array|null $context  The context to use for rendering.
      *
      * @since 0.1
      *
@@ -27,7 +27,7 @@ trait RenderTemplateCapableTrait
      *
      * @return string|Stringable The rendered output.
      */
-    protected function _renderTemplate(TemplateInterface $template, ContainerInterface $context = null)
+    protected function _renderTemplate(TemplateInterface $template, $context = null)
     {
         return $template->render($context);
     }

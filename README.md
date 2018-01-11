@@ -18,21 +18,16 @@ specialized yet common functionality that extends this, see
 [`dhii/output-renderer-base`].
 
 ### Classes
-- [`AbstractBlock`] - Intended for [`BlockInterface`], which is usually
+- [`StringableRenderCatcherTrait`] - Intended for [`BlockInterface`], which is usually
 something that contains all data needed to produce output. Takes care of what
 happens when it is cast to string.
-- [`AbstractTemplate`] - Intended for [`TemplateInterface`], which is usually
-something that can produce output with the help of a context. Takes care of
-creating a standardized flow of rendering with a context.
-- [`AbstractTemplateBlock`] - Standardizes flow for blocks that internally
-use a template to render.
+- [`RenderCapableTemplateBlockTrait`] - Renders a template using an internal context and template.
 - [`BlockAwareTrait`] - Internal functionality for storing and retrieving a
 block. Does minimal validation. Can be used to back up [`BlockAwareInterface`].
 - [`ContextAwareTrait`] - Internal functionality for storing and retrieving a
-context in the form of a [`ContainerInterface`]. Can be used to back up
-[`ContextAwareInterface`].
+context in the form of a [`ContainerInterface`]. Can be used to back up [`ContextAwareInterface`].
 - [`RenderTemplateCapableTrait`] - Standardizes the process of rendering a
-template. Intended to complement [`AbstractTemplateBlock`].
+template. Intended to complement [`RenderCapableTemplateBlockTrait`].
 - [`RendererAwareTrait`] - Internal functionality for storing and retrieving a
 renderer. Does minimal validation. Can be used to back up
 [`RendererAwareInterface`].
@@ -45,14 +40,13 @@ template. Does minimal validation. Can be used to back up
 [`dhii/output-renderer-interface`]:             https://github.com/Dhii/output-renderer-interface
 [`dhii/output-renderer-base`]:                  https://github.com/Dhii/output-renderer-base
 
-[`AbstractBlock`]:                  src/AbstractBlock.php
-[`AbstractTemplate`]:               src/AbstractTemplate.php
-[`AbstractTemplateBlock`]:          src/AbstractTemplateBlock.php
-[`BlockAwareTrait`]:                src/BlockAwareTrait.php
-[`ContextAwareTrait`]:              src/ContextAwareTrait.php
-[`RenderTemplateCapableTrait`]:     src/RenderTemplateCapableTrait.php
-[`RendererAwareTrait`]:             src/RendererAwareTrait.php
-[`TemplateAwareTrait`]:             src/TemplateAwareTrait.php
+[`StringableRenderCatcherTrait`]:       src/StringableRenderCatcherTrait.php
+[`RenderCapableTemplateBlockTrait`]:    src/RenderCapableTemplateBlockTrait.php
+[`BlockAwareTrait`]:                    src/BlockAwareTrait.php
+[`ContextAwareTrait`]:                  src/ContextAwareTrait.php
+[`RenderTemplateCapableTrait`]:         src/RenderTemplateCapableTrait.php
+[`RendererAwareTrait`]:                 src/RendererAwareTrait.php
+[`TemplateAwareTrait`]:                 src/TemplateAwareTrait.php
 
 [`BlockInterface`]:                 https://github.com/Dhii/output-renderer-interface/blob/v0.2/src/BlockInterface.php
 [`TemplateInterface`]:              https://github.com/Dhii/output-renderer-interface/blob/v0.2/src/TemplateInterface.php
