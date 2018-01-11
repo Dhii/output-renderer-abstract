@@ -12,29 +12,49 @@ use Xpmock\TestCase;
  *
  * @since 0.1
  */
-class AbstractBlockTest extends TestCase
+class StringableRenderCatcherTest extends TestCase
 {
     /**
      * The class name of the test subject.
      *
      * @since 0.1
      */
-    const TEST_SUBJECT_CLASSNAME = 'Dhii\Output\AbstractBlock';
+    const TEST_SUBJECT_CLASSNAME = 'Dhii\Output\StringableRenderCatcherTrait';
 
     /**
      * Creates a new instance of the test subject.
      *
-     * @since 0.1
+     * @since [*next-version*]
+     *
+     * @param array $methods The methods to mock.
      *
      * @return PHPUnit_Framework_MockObject_MockObject
      */
-    public function createInstance()
+    public function createInstance($methods = [])
     {
-        $mock = $this->getMockForAbstractClass(static::TEST_SUBJECT_CLASSNAME);
-        $mock->method('_render')->willReturn('');
-        $mock->method('_renderOnException')->willReturn('');
+        $methods = $this->mergeValues($methods, []);
+        $mock = $this->getMockBuilder(static::TEST_SUBJECT_CLASSNAME)
+                ->setMethods($methods)
+                ->getMockForTrait();
 
         return $mock;
+    }
+
+    /**
+     * Merges the values of two arrays.
+     *
+     * The resulting product will be a numeric array where the values of both inputs are present, without duplicates.
+     *
+     * @since [*next-version*]
+     *
+     * @param array $destination The base array.
+     * @param array $source      The array with more keys.
+     *
+     * @return array The array which contains unique values
+     */
+    public function mergeValues($destination, $source)
+    {
+        return array_keys(array_merge(array_flip($destination), array_flip($source)));
     }
 
     /**
@@ -85,29 +105,26 @@ class AbstractBlockTest extends TestCase
     {
         $subject = $this->createInstance();
 
-        $this->assertInstanceOf(
-            static::TEST_SUBJECT_CLASSNAME,
+        $this->assertInternalType(
+            'object',
             $subject,
             'A valid instance of the test subject could not be created.'
         );
     }
 
     /**
-     * Tests the __toString method to ensure that the output is correct.
+     * Tests the `__toString()` method to ensure that the output is correct.
      *
      * @since 0.1
      */
-    public function testToString()
+    public function testToStringNormal()
     {
         $output = uniqid('test-output-');
-        $subject = $this->getMockForAbstractClass(static::TEST_SUBJECT_CLASSNAME);
+        $subject = $this->createInstance();
         // Expect the render method to be called once
         $subject->expects($this->once())
                 ->method('_render')
                 ->willReturn($this->createStringable($output));
-        // Mock render-on-exception method
-        $subject->method('_renderOnException')
-                ->willReturn($outputException = 'Whoops. An error occurred.');
 
         $result = $subject->__toString();
         $this->assertInternalType('string', $result, 'Stringification must result in a primitive string');
@@ -115,21 +132,21 @@ class AbstractBlockTest extends TestCase
     }
 
     /**
-     * Tests the __toString method to ensure that internal exceptions are handled and some output is still provided.
+     * Tests the `__toString()` method to ensure that internal exceptions are handled and some output is still provided.
      *
      * @since 0.1
      */
     public function testToStringOnException()
     {
         $outputException = uniqid('test-output-');
-        $subject = $this->getMockForAbstractClass(static::TEST_SUBJECT_CLASSNAME);
+        $subject = $this->createInstance(['_render', '_renderException']);
         // Expect the render method to be called once
         $subject->expects($this->once())
                 ->method('_render')
-                ->willThrowException($exception = $this->createException('A wild exception appears!'));
+                ->willThrowException($exception = $this->createException(uniqid('rendering-exception')));
         // Expect exception handler to called once with the exception as argument
         $subject->expects($this->once())
-                ->method('_renderOnException')
+                ->method('_renderException')
                 ->with($exception)
                 ->willReturn($this->createStringable($outputException));
 
@@ -143,41 +160,39 @@ class AbstractBlockTest extends TestCase
     }
 
     /**
-     * Tests whether the test subject can be casted into a string.
+     * Tests whether the test subject can be cast into a string.
      *
-     * @since 0.1
+     * @since [*next-version*]
      */
-    public function testCanBeCastedToString()
+    public function testCanBeCastToString()
     {
-        $subject = $this->getMockForAbstractClass(static::TEST_SUBJECT_CLASSNAME);
+        $rendered = uniqid('rendered');
+        $subject = $this->createInstance(['_render']);
         // Expect the render method to be called once - the output itself is not relevant for this test
         $subject->expects($this->once())
                 ->method('_render')
-                ->willReturn($expected = '');
-        $subject->method('_renderOnException')
-                ->willReturn(null);
+                ->willReturn($rendered);
 
-        $this->assertInternalType(
-            'string',
-            (string) $subject,
-            'Test subject could not be casted to string'
-        );
+        $result = (string) $subject;
+        $this->assertSame($rendered, $result, 'Could not correctly cast to string');
     }
 
     /**
-     * Tests whether the test subject can be casted into a string when an exception is thrown internally.
+     * Tests whether the test subject can be cast into a string when an exception is thrown internally.
      *
-     * @since 0.1
+     * @since [*next-version*]
      */
-    public function testCanBeCastedToStringOnException()
+    public function testCanBeCastToStringOnException()
     {
-        $subject = $this->getMockForAbstractClass(static::TEST_SUBJECT_CLASSNAME);
+        $exception = $this->createException('rendering-failed');
+        $subject = $this->createInstance(['_render', '_renderException']);
         // Expect the render method to be called once
         $subject->expects($this->once())
                 ->method('_render')
-                ->willThrowException($this->createException('A wild exception appears!'));
+                ->willThrowException($exception);
         // Mock render-on-exception method
-        $subject->method('_renderOnException')
+        $subject->method('_renderException')
+                ->with($exception)
                 ->willReturn($outputException = 'Whoops. An error occurred.');
 
         $this->assertInternalType(

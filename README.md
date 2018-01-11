@@ -27,7 +27,7 @@ block. Does minimal validation. Can be used to back up [`BlockAwareInterface`].
 - [`ContextAwareTrait`] - Internal functionality for storing and retrieving a
 context in the form of a [`ContainerInterface`]. Can be used to back up [`ContextAwareInterface`].
 - [`RenderTemplateCapableTrait`] - Standardizes the process of rendering a
-template. Intended to complement [`AbstractTemplateBlock`].
+template. Intended to complement [`RenderCapableBlockTrait`].
 - [`RendererAwareTrait`] - Internal functionality for storing and retrieving a
 renderer. Does minimal validation. Can be used to back up
 [`RendererAwareInterface`].
