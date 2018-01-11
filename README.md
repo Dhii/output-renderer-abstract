@@ -21,16 +21,11 @@ specialized yet common functionality that extends this, see
 - [`AbstractBlock`] - Intended for [`BlockInterface`], which is usually
 something that contains all data needed to produce output. Takes care of what
 happens when it is cast to string.
-- [`AbstractTemplate`] - Intended for [`TemplateInterface`], which is usually
-something that can produce output with the help of a context. Takes care of
-creating a standardized flow of rendering with a context.
-- [`AbstractTemplateBlock`] - Standardizes flow for blocks that internally
-use a template to render.
+- [`RenderCapableTrait`] - Renders a template using an internal context.
 - [`BlockAwareTrait`] - Internal functionality for storing and retrieving a
 block. Does minimal validation. Can be used to back up [`BlockAwareInterface`].
 - [`ContextAwareTrait`] - Internal functionality for storing and retrieving a
-context in the form of a [`ContainerInterface`]. Can be used to back up
-[`ContextAwareInterface`].
+context in the form of a [`ContainerInterface`]. Can be used to back up [`ContextAwareInterface`].
 - [`RenderTemplateCapableTrait`] - Standardizes the process of rendering a
 template. Intended to complement [`AbstractTemplateBlock`].
 - [`RendererAwareTrait`] - Internal functionality for storing and retrieving a
@@ -46,8 +41,7 @@ template. Does minimal validation. Can be used to back up
 [`dhii/output-renderer-base`]:                  https://github.com/Dhii/output-renderer-base
 
 [`AbstractBlock`]:                  src/AbstractBlock.php
-[`AbstractTemplate`]:               src/AbstractTemplate.php
-[`AbstractTemplateBlock`]:          src/AbstractTemplateBlock.php
+[`RenderCapableTrait`]:             src/RenderCapableTrait.php
 [`BlockAwareTrait`]:                src/BlockAwareTrait.php
 [`ContextAwareTrait`]:              src/ContextAwareTrait.php
 [`RenderTemplateCapableTrait`]:     src/RenderTemplateCapableTrait.php
