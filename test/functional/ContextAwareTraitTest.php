@@ -2,6 +2,8 @@
 
 namespace Dhii\Output\FuncTest;
 
+use InvalidArgumentException;
+use PHPUnit_Framework_MockObject_MockObject as MockObject;
 use Psr\Container\ContainerInterface;
 use Xpmock\TestCase;
 use Dhii\Output\ContextAwareTrait as TestSubject;
@@ -25,12 +27,14 @@ class ContextAwareTraitTest extends TestCase
      *
      * @since 0.1
      *
-     * @return TestSubject
+     * @return MockObject
      */
     public function createInstance()
     {
         // Create mock
-        $mock = $this->getMockForTrait(static::TEST_SUBJECT_CLASSNAME);
+        $mock = $this->getMockBuilder(static::TEST_SUBJECT_CLASSNAME)
+                     ->setMethods(['_normalizeContainer'])
+                     ->getMockForTrait();
 
         return $mock;
     }
@@ -47,10 +51,12 @@ class ContextAwareTraitTest extends TestCase
     public function createContext($data = [])
     {
         $mock = $this->mock('Psr\Container\ContainerInterface')
-            ->get(function ($key) use ($data) {
-                return isset($data[$key]) ? $data[$key] : null;
-            })
-            ->has();
+                     ->get(
+                         function($key) use ($data) {
+                             return isset($data[$key]) ? $data[$key] : null;
+                         }
+                     )
+                     ->has();
 
         return $mock->new();
     }
@@ -81,8 +87,28 @@ class ContextAwareTraitTest extends TestCase
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
 
-        $reflect->_setContext($block = $this->createContext());
+        $subject->method('_normalizeContext')->willReturnArgument(0);
 
-        $this->assertSame($block, $reflect->_getContext(), 'Set and retrieved blocks are not the same.');
+        $ctx = $this->createContext();
+        $reflect->_setContext($ctx);
+
+        $this->assertSame($ctx, $reflect->_getContext(), 'Set and retrieved blocks are not the same.');
+    }
+
+    /**
+     * Tests the context setter methods to assert that an exception is thrown when the internal normalization fails.
+     *
+     * @since 0.1
+     */
+    public function testSetContextInvalid()
+    {
+        $subject = $this->createInstance();
+        $reflect = $this->reflect($subject);
+
+        $subject->method('_normalizeContext')->willThrowException(new InvalidArgumentException());
+
+        $reflect->_setContext("invalid");
+
+        $this->setExpectedException('InvalidArgumentException');
     }
 }
