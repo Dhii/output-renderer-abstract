@@ -2,10 +2,12 @@
 
 namespace Dhii\Output;
 
+use ArrayAccess;
 use Exception as RootException;
 use InvalidArgumentException;
 use Dhii\Util\String\StringableInterface as Stringable;
 use Psr\Container\ContainerInterface;
+use stdClass;
 
 /**
  * Common functionality for objects that are aware of a context.
@@ -19,7 +21,7 @@ trait ContextAwareTrait
      *
      * @since 0.1
      *
-     * @var ContainerInterface|null
+     * @var array|ArrayAccess|stdClass|ContainerInterface|null
      */
     protected $context;
 
@@ -28,7 +30,7 @@ trait ContextAwareTrait
      *
      * @since 0.1
      *
-     * @return ContainerInterface|null The context.
+     * @return array|ArrayAccess|stdClass|ContainerInterface|null The context.
      */
     protected function _getContext()
     {
@@ -40,52 +42,25 @@ trait ContextAwareTrait
      *
      * @since 0.1
      *
-     * @param ContainerInterface|null $context The context instance, or null.
+     * @param array|ArrayAccess|stdClass|ContainerInterface|null $context The context instance, or null.
      */
     protected function _setContext($context)
     {
-        if ($context !== null && !($context instanceof ContainerInterface)) {
-            throw $this->_createInvalidArgumentException(
-                $this->__('Invalid context'),
-                null,
-                null,
-                $context
-            );
-        }
-
-        $this->context = $context;
+        $this->context = $this->_normalizeContainer($context);
     }
 
     /**
-     * Creates a new invalid argument exception.
+     * Normalizes a container.
      *
-     * @since 0.1
+     * @since [*next-version*]
      *
-     * @param string|Stringable|null $message  The error message, if any.
-     * @param int|null               $code     The error code, if any.
-     * @param RootException|null     $previous The inner exception for chaining, if any.
-     * @param mixed|null             $argument The invalid argument, if any.
+     * @param array|ArrayAccess|stdClass|ContainerInterface $container The container to normalize.
      *
-     * @return InvalidArgumentException The new exception.
+     * @throws InvalidArgumentException If the container is invalid.
+     *
+     * @return array|ArrayAccess|stdClass|ContainerInterface Something that can be used with
+     *                                                       {@see ContainerGetCapableTrait#_containerGet()} or
+     *                                                       {@see ContainerHasCapableTrait#_containerHas()}.
      */
-    abstract protected function _createInvalidArgumentException(
-        $message = null,
-        $code = null,
-        RootException $previous = null,
-        $argument = null
-    );
-
-    /**
-     * Translates a string, and replaces placeholders.
-     *
-     * @since 0.1
-     * @see   sprintf()
-     *
-     * @param string $string  The format string to translate.
-     * @param array  $args    Placeholder values to replace in the string.
-     * @param mixed  $context The context for translation.
-     *
-     * @return string The translated string.
-     */
-    abstract protected function __($string, $args = [], $context = null);
+    abstract protected function _normalizeContainer($container);
 }

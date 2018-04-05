@@ -21,8 +21,8 @@
         "ptrofimov/xpmock": "^1.1",
         "dhii/php-cs-fixer-config": "^0.1",
         "codeclimate/php-test-reporter": "<=0.3.2",
-        "dhii/validation-interface": "dev-develop",
-        "dhii/exception-interface": "^0.1"
+        "dhii/validation-interface": "^0.1 | ^0.2-alpha1",
+        "dhii/exception-interface": "^0.1 | ^0.2-alpha1"
     },
     "autoload": {
         "psr-4": {
@@ -37,5 +37,8 @@
         "branch-alias": {
             "dev-develop": "0.1.x-dev"
         }
+    },
+    "suggest": {
+        "dhii/container-helper-base": "For normalizing context containers"
     }
 }
