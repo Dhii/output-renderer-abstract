@@ -46,7 +46,9 @@ trait ContextAwareTrait
      */
     protected function _setContext($context)
     {
-        $this->context = $this->_normalizeContainer($context);
+        $this->context = ($context !== null)
+            ? $this->_normalizeContainer($context)
+            : null;
     }
 
     /**
