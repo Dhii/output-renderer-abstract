@@ -96,6 +96,23 @@ class ContextAwareTraitTest extends TestCase
     }
 
     /**
+     * Tests the context getter and setter methods with a null context to ensure correct assignment and retrieval.
+     *
+     * @since 0.1
+     */
+    public function testGetSetContextNull()
+    {
+        $subject = $this->createInstance();
+        $reflect = $this->reflect($subject);
+
+        $subject->expects($this->never())->method('_normalizeContainer');
+
+        $reflect->_setContext(null);
+
+        $this->assertNull($reflect->_getContext(), 'Retrieved context is not null.');
+    }
+
+    /**
      * Tests the context setter methods to assert that an exception is thrown when the internal normalization fails.
      *
      * @since 0.1
