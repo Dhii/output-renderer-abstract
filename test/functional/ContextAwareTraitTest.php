@@ -87,7 +87,7 @@ class ContextAwareTraitTest extends TestCase
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
 
-        $subject->method('_normalizeContext')->willReturnArgument(0);
+        $subject->method('_normalizeContainer')->willReturnArgument(0);
 
         $ctx = $this->createContext();
         $reflect->_setContext($ctx);
@@ -105,10 +105,10 @@ class ContextAwareTraitTest extends TestCase
         $subject = $this->createInstance();
         $reflect = $this->reflect($subject);
 
-        $subject->method('_normalizeContext')->willThrowException(new InvalidArgumentException());
-
-        $reflect->_setContext("invalid");
+        $subject->method('_normalizeContainer')->willThrowException(new InvalidArgumentException());
 
         $this->setExpectedException('InvalidArgumentException');
+
+        $reflect->_setContext("invalid");
     }
 }
