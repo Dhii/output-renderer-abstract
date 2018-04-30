@@ -52,7 +52,7 @@ class ContextAwareTraitTest extends TestCase
     {
         $mock = $this->mock('Psr\Container\ContainerInterface')
                      ->get(
-                         function($key) use ($data) {
+                         function ($key) use ($data) {
                              return isset($data[$key]) ? $data[$key] : null;
                          }
                      )
@@ -126,6 +126,6 @@ class ContextAwareTraitTest extends TestCase
 
         $this->setExpectedException('InvalidArgumentException');
 
-        $reflect->_setContext("invalid");
+        $reflect->_setContext('invalid');
     }
 }
