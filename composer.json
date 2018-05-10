@@ -22,7 +22,8 @@
         "dhii/php-cs-fixer-config": "^0.1",
         "codeclimate/php-test-reporter": "<=0.3.2",
         "dhii/validation-interface": "^0.1 | ^0.2-alpha1",
-        "dhii/exception-interface": "^0.1 | ^0.2-alpha1"
+        "dhii/exception-interface": "^0.2-alpha3",
+        "dhii/invocable-interface": "^0.1-alpha1"
     },
     "autoload": {
         "psr-4": {

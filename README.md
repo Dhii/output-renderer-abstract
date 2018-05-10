@@ -34,6 +34,7 @@ renderer. Does minimal validation. Can be used to back up
 - [`TemplateAwareTrait`] - Internal functionality for storing and retrieving a
 template. Does minimal validation. Can be used to back up
 [`TemplateAwareInterface`].
+- [`CaptureOutputCapableTrait`] - Functionality for capturing the output of a callback.
 
 
 [Dhii]:                                         https://github.com/Dhii/dhii
@@ -47,6 +48,7 @@ template. Does minimal validation. Can be used to back up
 [`RenderTemplateCapableTrait`]:         src/RenderTemplateCapableTrait.php
 [`RendererAwareTrait`]:                 src/RendererAwareTrait.php
 [`TemplateAwareTrait`]:                 src/TemplateAwareTrait.php
+[`CaptureOutputCapableTrait`]:          src/CaptureOutputCapableTrait.php
 
 [`BlockInterface`]:                 https://github.com/Dhii/output-renderer-interface/blob/v0.2/src/BlockInterface.php
 [`TemplateInterface`]:              https://github.com/Dhii/output-renderer-interface/blob/v0.2/src/TemplateInterface.php

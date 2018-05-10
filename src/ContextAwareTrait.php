@@ -3,9 +3,7 @@
 namespace Dhii\Output;
 
 use ArrayAccess;
-use Exception as RootException;
 use InvalidArgumentException;
-use Dhii\Util\String\StringableInterface as Stringable;
 use Psr\Container\ContainerInterface;
 use stdClass;
 
