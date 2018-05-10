@@ -3,4 +3,6 @@
 /test/coverage/
 /test/log/
 /build/
-/.idea/
+/.idea/codeStyles/
+/.idea/inspectionProfiles/
+/.idea/workspace.xml
