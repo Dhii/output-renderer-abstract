@@ -1,6 +1,6 @@
 # Dhii - Output - Renderer - Abstract
 
-[![Build Status](https://travis-ci.org/Dhii/output-renderer-abstract.svg?branch=master)](https://travis-ci.org/Dhii/output-renderer-abstract)
+[![Build Status](https://travis-ci.org/Dhii/output-renderer-abstract.svg?branch=develop)](https://travis-ci.org/Dhii/output-renderer-abstract)
 [![Code Climate](https://codeclimate.com/github/Dhii/output-renderer-abstract/badges/gpa.svg)](https://codeclimate.com/github/Dhii/output-renderer-abstract)
 [![Test Coverage](https://codeclimate.com/github/Dhii/output-renderer-abstract/badges/coverage.svg)](https://codeclimate.com/github/Dhii/output-renderer-abstract/coverage)
 [![Latest Stable Version](https://poser.pugx.org/dhii/output-renderer-abstract/version)](https://packagist.org/packages/dhii/output-renderer-abstract)
